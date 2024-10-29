@@ -1,0 +1,29 @@
+.characters-list {
+    display: flex;
+    gap: 16px;
+    overflow-x: scroll;
+}
+
+.character-txt {
+    font-size: 24px;
+}
+
+.character-img {
+    width: 200px;
+    height: 200px;
+}
+
+.title-icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.star-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.star-icon:hover {
+    fill: gray;
+}

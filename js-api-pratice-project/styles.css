@@ -1,0 +1,14 @@
+.characters-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: scroll;
+}
+
+.character-txt {
+  font-size: 24px;
+}
+
+.character-img {
+  width: 200px;
+  height: 200px;
+}
