@@ -10,6 +10,22 @@ export default function App() {
   const [animeId, setAnimeId] = useState(1);
   const [input, setInput] = useState("");
 
+  // useEffect for Web Worker
+
+  useEffect(() => {
+    const myWorker = new Worker("../src/worker.js");
+
+    myWorker.addEventListener("message", ({ data }) => {
+      console.log(data);
+    });
+
+    myWorker.postMessage("https://opentdb.com/api.php?amount=1");
+
+    return () => {
+      myWorker.terminate();
+    };
+  }, []);
+
   useEffect(() => {
     async function fetchAnimeData(id) {
       try {
@@ -113,17 +129,15 @@ function ListOfCharacters({ animeID }) {
       <h1>List of Characters:</h1>
       <div className="characters-list">
         {charactersList &&
-          charactersList
-            .slice(0, 10)
-            .map((element) => (
-              <Character
-                key={element.character.name}
-                character={{
-                  name: element.character.name,
-                  image: element.character.images.jpg.image_url,
-                }}
-              />
-            ))}
+          charactersList.slice(0, 10).map((element) => (
+            <Character
+              key={element.character.name}
+              character={{
+                name: element.character.name,
+                image: element.character.images.jpg.image_url,
+              }}
+            />
+          ))}
       </div>
     </div>
   );
